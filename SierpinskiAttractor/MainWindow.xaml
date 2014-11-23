@@ -41,11 +41,16 @@
         <RadioButton Content="6" HorizontalAlignment="Left" Margin="614,218,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Label Name ="previewColor" Content="Preview:" HorizontalAlignment="Left" Margin="476,111,0,0" Grid.Row="1" VerticalAlignment="Top" Width="81" Height="28"/>
         <RadioButton Name ="circle" Content="Circle" HorizontalAlignment="Left" Margin="562,167,0,0" Grid.Row="1" VerticalAlignment="Top"
+                     IsChecked="True"
                      Checked="circle_Checked"/>
         <Label Name ="shape" Content="Shape" HorizontalAlignment="Left" Margin="476,157,0,0" Grid.Row="1" VerticalAlignment="Top" FontWeight="Bold"/>
         <RadioButton Name ="square" Content="Square" HorizontalAlignment="Left" Margin="665,167,0,0" Grid.Row="1" VerticalAlignment="Top"
                      Checked="square_Checked"/>
         <Label Content="Color preview Here" HorizontalAlignment="Left" Margin="573,113,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20"/>
+        <Label Name ="StatusLabel" Content="Add some control points" HorizontalAlignment="Left" Height="38" Margin="488,312,0,0" Grid.Row="1" VerticalAlignment="Top"
+               FontSize="20" FontWeight="Bold"/>
+        <Label Name="mousePos" Content="/pos" HorizontalAlignment="Left" Height="27" Margin="503,350,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Name ="Indexshape" Content="Label" HorizontalAlignment="Left" Margin="503,377,0,0" Grid.Row="1" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
