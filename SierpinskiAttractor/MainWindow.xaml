@@ -7,17 +7,32 @@
             <RowDefinition Height="3*"/>
             <RowDefinition Height="115*"/>
         </Grid.RowDefinitions>
-        <ComboBox HorizontalAlignment="Left" Margin="650,70,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1" Height="22"/>
-        <RadioButton Content="Square" HorizontalAlignment="Left" Margin="528,75,0,0" VerticalAlignment="Top" Grid.Row="1" Height="16" Width="53"/>
-        <RadioButton Content="Ellipse" HorizontalAlignment="Left" Margin="528,96,0,0" VerticalAlignment="Top" Grid.Row="1" Height="16" Width="49"/>
-        <Label Content="Shape" HorizontalAlignment="Left" Margin="465,70,0,0" VerticalAlignment="Top" Grid.Row="1" Height="26" Width="43" FontWeight="Bold"/>
-        <Label Content="Color" HorizontalAlignment="Left" Margin="606,70,0,0" VerticalAlignment="Top" Grid.Row="1" Height="26" Width="39" FontWeight="Bold"/>
-        <Button Content="Run" HorizontalAlignment="Left" Margin="465,153,0,0" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.504,0.286" Grid.Row="1" Height="22" Click="Run_Click"/>
-        <Button Content="Clear" HorizontalAlignment="Left" Margin="630,153,0,0" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.516,0.613" Grid.Row="1" Height="22" Click="Clear_Click"/>
+        <ComboBox HorizontalAlignment="Left" Margin="520,80,0,0" VerticalAlignment="Top" Width="49" Grid.Row="1" Height="22"/>
+        <RadioButton Content="2" HorizontalAlignment="Left" Margin="520,159,0,0" VerticalAlignment="Top" Grid.Row="1" Height="16" Width="53"/>
+        <RadioButton Content="4" HorizontalAlignment="Left" Margin="586,159,0,0" VerticalAlignment="Top" Grid.Row="1" Height="16" Width="49"/>
+        <Label Content="Size" HorizontalAlignment="Left" Margin="476,130,0,0" VerticalAlignment="Top" Grid.Row="1" Height="26" Width="43" FontWeight="Bold"/>
+        <Label Content="Color" HorizontalAlignment="Left" Margin="476,49,0,0" VerticalAlignment="Top" Grid.Row="1" Height="26" Width="39" FontWeight="Bold"/>
+        <Button Content="Run" HorizontalAlignment="Left" Margin="472,270,0,0" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.504,0.286" Grid.Row="1" Height="22" Click="Run_Click"/>
+        <Button Content="Clear" HorizontalAlignment="Left" Margin="637,270,0,0" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.516,0.613" Grid.Row="1" Height="22" Click="Clear_Click"/>
         <Canvas HorizontalAlignment="Left" Height="435" Margin="10,0,0,0" VerticalAlignment="Top" Width="450" Grid.Row="1" Background="White"/>
         <Button Content="About" HorizontalAlignment="Left" Height="27" Margin="517,417,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.428,0.321" Click="About_Click" />
         <Button Content="Usage" HorizontalAlignment="Left" Margin="613,417,0,0" Grid.Row="1" VerticalAlignment="Top" Width="86" Click="Usage_Click" Height="27"/>
         <Label Content="Sierpinski Attractor" HorizontalAlignment="Left" Margin="465,10,0,0" Grid.Row="1" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
+        <ComboBox HorizontalAlignment="Left" Margin="729,82,0,0" Grid.Row="1" VerticalAlignment="Top" Width="49" RenderTransformOrigin="0.5,0.5">
+            <ComboBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.484"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ComboBox.RenderTransform>
+        </ComboBox>
+        <ComboBox HorizontalAlignment="Left" Margin="633,80,0,0" Grid.Row="1" VerticalAlignment="Top" Width="35"/>
+        <Label Content="Red" HorizontalAlignment="Left" Margin="484,80,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="Green" HorizontalAlignment="Left" Margin="586,80,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="Blue" HorizontalAlignment="Left" Margin="687,80,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <RadioButton Content="6" HorizontalAlignment="Left" Margin="646,159,0,0" Grid.Row="1" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
