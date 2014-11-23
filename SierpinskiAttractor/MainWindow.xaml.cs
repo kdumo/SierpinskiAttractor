@@ -34,5 +34,15 @@ namespace SierpinskiAttractor
         {
             MessageBoxResult about = MessageBox.Show("");
         }
+
+        private void Run_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
