@@ -24,5 +24,15 @@ namespace SierpinskiAttractor
         {
             InitializeComponent();
         }
+
+        private void Usage_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult usage = MessageBox.Show("");
+        }
+
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult about = MessageBox.Show("");
+        }
     }
 }

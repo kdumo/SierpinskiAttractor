@@ -3,12 +3,8 @@ C:\Users\Kyle\Documents\Visual Studio 2012\Projects\SierpinskiAttractor\Sierpins
 C:\Users\Kyle\Documents\Visual Studio 2012\Projects\SierpinskiAttractor\SierpinskiAttractor\SierpinskiAttractor\bin\Debug\SierpinskiAttractor.exe
 C:\Users\Kyle\Documents\Visual Studio 2012\Projects\SierpinskiAttractor\SierpinskiAttractor\SierpinskiAttractor\bin\Debug\SierpinskiAttractor.pdb
 C:\Users\Kyle\Documents\Visual Studio 2012\Projects\SierpinskiAttractor\SierpinskiAttractor\SierpinskiAttractor\obj\Debug\SierpinskiAttractor.csprojResolveAssemblyReference.cache
-C:\Users\Kyle\Documents\Visual Studio 2012\Projects\SierpinskiAttractor\SierpinskiAttractor\SierpinskiAttractor\obj\Debug\About.baml
 C:\Users\Kyle\Documents\Visual Studio 2012\Projects\SierpinskiAttractor\SierpinskiAttractor\SierpinskiAttractor\obj\Debug\MainWindow.baml
-C:\Users\Kyle\Documents\Visual Studio 2012\Projects\SierpinskiAttractor\SierpinskiAttractor\SierpinskiAttractor\obj\Debug\Usage.baml
-C:\Users\Kyle\Documents\Visual Studio 2012\Projects\SierpinskiAttractor\SierpinskiAttractor\SierpinskiAttractor\obj\Debug\About.g.cs
 C:\Users\Kyle\Documents\Visual Studio 2012\Projects\SierpinskiAttractor\SierpinskiAttractor\SierpinskiAttractor\obj\Debug\MainWindow.g.cs
-C:\Users\Kyle\Documents\Visual Studio 2012\Projects\SierpinskiAttractor\SierpinskiAttractor\SierpinskiAttractor\obj\Debug\Usage.g.cs
 C:\Users\Kyle\Documents\Visual Studio 2012\Projects\SierpinskiAttractor\SierpinskiAttractor\SierpinskiAttractor\obj\Debug\App.g.cs
 C:\Users\Kyle\Documents\Visual Studio 2012\Projects\SierpinskiAttractor\SierpinskiAttractor\SierpinskiAttractor\obj\Debug\SierpinskiAttractor_MarkupCompile.cache
 C:\Users\Kyle\Documents\Visual Studio 2012\Projects\SierpinskiAttractor\SierpinskiAttractor\SierpinskiAttractor\obj\Debug\SierpinskiAttractor.g.resources
