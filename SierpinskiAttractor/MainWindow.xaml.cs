@@ -34,6 +34,7 @@ namespace SierpinskiAttractor
         private int cpCounter = 0;
         private Shape selectedPoint = null;
         private bool captured = false;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -51,15 +52,17 @@ namespace SierpinskiAttractor
 
         private void Run_Click(object sender, RoutedEventArgs e)
         {
-
+            //sierpinskinate();
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
             cpCounter = 0;
+            Indexshape.Content = "Control Points: " + cpCounter;
             sx = new double[6];
             sy = new double[6];
             controlPoints = new Shape[6];
+            DaCanvas.Children.Clear();
 
         }
 
@@ -76,17 +79,17 @@ namespace SierpinskiAttractor
                 Canvas.SetTop(selectedPoint,sy[shapeIndex]);
                 my = y;
             }
-            else
-                mousePos.Content = String.Format("Mouse at ({0},{1})", x, y);
+            //else...nothing right??
+            mousePos.Content = String.Format("Mouse at ({0},{1})", x, y);
             
         }
 
         private void setControlPoint(object sender, MouseButtonEventArgs e)
         {
             Shape newShape;
-            //forr size debug
+            //forr size debug, can add method for size and color
             int size = 10;
-            if(cpCounter < 6){
+            if(cpCounter < 6){  //out of bounds stuff
                 String index = "Shape"+cpCounter;
                 switch (shapeType)
                 {
@@ -156,8 +159,7 @@ namespace SierpinskiAttractor
                 captured = true;
                 mx = e.GetPosition(DaCanvas).X;
                 my = e.GetPosition(DaCanvas).Y;
-                for (shapeIndex = 0; shapeIndex < 6 && selectedPoint.Name != controlPoints[shapeIndex].Name; shapeIndex++) ;
-
+                for (shapeIndex = 0; shapeIndex < cpCounter && selectedPoint.Name != controlPoints[shapeIndex].Name; shapeIndex++) ;
             }
         }
 
@@ -170,6 +172,19 @@ namespace SierpinskiAttractor
                 Mouse.Capture(null); //take nothing (release)
                 captured = false;
             }
+            //clear canvas, redraw control points and rerun
+            DaCanvas.Children.Clear();
+            for (int i = 0; i < cpCounter; i++)
+            {
+                Canvas.SetLeft(controlPoints[i], sx[i]);
+                Canvas.SetTop(controlPoints[i], sy[i]);
+                DaCanvas.Children.Add(controlPoints[i]);
+            }
+
+        }
+
+        public void sierpinskinate()
+        {
 
         }
     }
