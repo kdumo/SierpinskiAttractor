@@ -12,3 +12,16 @@ C:\Users\Kyle\Documents\Visual Studio 2012\Projects\SierpinskiAttractor\Sierpins
 C:\Users\Kyle\Documents\Visual Studio 2012\Projects\SierpinskiAttractor\SierpinskiAttractor\SierpinskiAttractor\obj\Debug\SierpinskiAttractor.csproj.GenerateResource.Cache
 C:\Users\Kyle\Documents\Visual Studio 2012\Projects\SierpinskiAttractor\SierpinskiAttractor\SierpinskiAttractor\obj\Debug\SierpinskiAttractor.exe
 C:\Users\Kyle\Documents\Visual Studio 2012\Projects\SierpinskiAttractor\SierpinskiAttractor\SierpinskiAttractor\obj\Debug\SierpinskiAttractor.pdb
+C:\Users\Joseph\Documents\GitHub\SierpinskiAttractor\SierpinskiAttractor\bin\Debug\SierpinskiAttractor.exe.config
+C:\Users\Joseph\Documents\GitHub\SierpinskiAttractor\SierpinskiAttractor\obj\Debug\SierpinskiAttractor.exe
+C:\Users\Joseph\Documents\GitHub\SierpinskiAttractor\SierpinskiAttractor\obj\Debug\SierpinskiAttractor.pdb
+C:\Users\Joseph\Documents\GitHub\SierpinskiAttractor\SierpinskiAttractor\bin\Debug\SierpinskiAttractor.exe
+C:\Users\Joseph\Documents\GitHub\SierpinskiAttractor\SierpinskiAttractor\bin\Debug\SierpinskiAttractor.pdb
+C:\Users\Joseph\Documents\GitHub\SierpinskiAttractor\SierpinskiAttractor\obj\Debug\SierpinskiAttractor.csprojResolveAssemblyReference.cache
+C:\Users\Joseph\Documents\GitHub\SierpinskiAttractor\SierpinskiAttractor\obj\Debug\MainWindow.baml
+C:\Users\Joseph\Documents\GitHub\SierpinskiAttractor\SierpinskiAttractor\obj\Debug\MainWindow.g.cs
+C:\Users\Joseph\Documents\GitHub\SierpinskiAttractor\SierpinskiAttractor\obj\Debug\App.g.cs
+C:\Users\Joseph\Documents\GitHub\SierpinskiAttractor\SierpinskiAttractor\obj\Debug\SierpinskiAttractor_MarkupCompile.cache
+C:\Users\Joseph\Documents\GitHub\SierpinskiAttractor\SierpinskiAttractor\obj\Debug\SierpinskiAttractor.g.resources
+C:\Users\Joseph\Documents\GitHub\SierpinskiAttractor\SierpinskiAttractor\obj\Debug\SierpinskiAttractor.Properties.Resources.resources
+C:\Users\Joseph\Documents\GitHub\SierpinskiAttractor\SierpinskiAttractor\obj\Debug\SierpinskiAttractor.csproj.GenerateResource.Cache
