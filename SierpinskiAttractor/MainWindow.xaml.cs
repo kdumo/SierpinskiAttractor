@@ -27,13 +27,17 @@ namespace SierpinskiAttractor
         private enum selectableShapes { Circle, Rectangle }
         private selectableShapes shapeType = selectableShapes.Circle;//add more later maybe...or not
         private double mx, my;   //mouse x and y in canvas
+
         private double[] sx = new double[6]; 
         private double[] sy = new double[6];   //shape x and y
         private Shape[] controlPoints = new Shape[6];
         private int shapeIndex = 0;
         private int cpCounter = 0;
+
         private Shape selectedPoint = null;
         private bool captured = false;
+        Random seed = new Random();
+        //SAShape[] pattern = new SAShape[2000];
 
         public MainWindow()
         {
@@ -52,7 +56,10 @@ namespace SierpinskiAttractor
 
         private void Run_Click(object sender, RoutedEventArgs e)
         {
-            //sierpinskinate();
+            if (cpCounter < 3)
+                StatusLabel.Content = "Not Enough Control Points";
+            else
+                sierpinskinate();
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e)
@@ -90,13 +97,13 @@ namespace SierpinskiAttractor
             //forr size debug, can add method for size and color
             int size = 10;
             if(cpCounter < 6){  //out of bounds stuff
-                String index = "Shape"+cpCounter;
-                switch (shapeType)
+                String index = "Point"+cpCounter;
+                switch (shapeType)  //1 ellipse 2 for rectangle
                 {
                     case selectableShapes.Circle:
                         newShape = new Ellipse()
                         {
-                            Name = index,
+                            Name = index + "1",
                             Height = size,
                             Width = size,
                             Fill = Brushes.Blue
@@ -105,7 +112,7 @@ namespace SierpinskiAttractor
                         };break;
                     case selectableShapes.Rectangle:
                         newShape = new Rectangle(){
-                            Name = index,
+                            Name = index + "2",
                             Height = size,
                             Width = size,
                             Fill = Brushes.Pink
@@ -149,8 +156,9 @@ namespace SierpinskiAttractor
         {
             //drag point on click down
             try { selectedPoint = (Shape)e.Source; }
-            catch (System.InvalidCastException ice)
+            catch (System.InvalidCastException exc) //warningss
             {
+                StatusLabel.Content = "Not a Point";
                 return;
             }
             if (selectedPoint != null)
@@ -185,7 +193,35 @@ namespace SierpinskiAttractor
 
         public void sierpinskinate()
         {
-
+            SAShape[] pattern = new SAShape[2000];
+            int lastSeed = seed.Next(0,cpCounter);
+            //Shape currentPoint = controlPoints[initial];
+            SAShape currentPoint = new SAShape(controlPoints[lastSeed], sx[lastSeed], sy[lastSeed], lastSeed);
+            SAShape lastPoint;
+            SAShape nextPoint;
+            for(int i = 0;i < 2000;i++)
+            {
+                int random = seed.Next(0, cpCounter);
+                while(random==lastSeed)
+                    random = seed.Next(0, cpCounter);
+                nextPoint = new SAShape(controlPoints[random], sx[random], sy[random], random);
+                if (i == 0)
+                    lastPoint = new SAShape(currentPoint.getParent(), (currentPoint.x() + nextPoint.x())/2, 
+                        (currentPoint.y() + nextPoint.y())/2, random);
+                else
+                    lastPoint = new SAShape(currentPoint.getParent(), (currentPoint.x() + nextPoint.x()) / 2, 
+                        (currentPoint.y() + nextPoint.y()) / 2, random);
+                pattern[i] = lastPoint;
+                Canvas.SetLeft(pattern[i].getShape(), pattern[i].x());
+                Canvas.SetTop(pattern[i].getShape(), pattern[i].y());
+                DaCanvas.Children.Add(pattern[i].getShape());
+                currentPoint = lastPoint;
+                lastSeed = random;
+            }
         }
+       // public void sierpinskinate()
+       // {
+
+       // }
     }
 }
