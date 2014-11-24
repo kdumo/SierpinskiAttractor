@@ -62,6 +62,18 @@ namespace SierpinskiAttractor
                 StatusLabel.Visibility = System.Windows.Visibility.Hidden;
                 sierpinskinate();
             }
+            else if (run)
+            {
+                DaCanvas.Children.Clear();
+                for (int i = 0; i < cpCounter; i++)
+                {
+                    Canvas.SetLeft(cp[i].getShape(), cp[i].x());
+                    Canvas.SetTop(cp[i].getShape(), cp[i].y());
+                    DaCanvas.Children.Add(cp[i].getShape());
+                }
+                if (run)
+                    sierpinskinate();
+            }
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e)
