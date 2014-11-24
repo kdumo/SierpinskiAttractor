@@ -3,7 +3,7 @@
  * Sierpinski Attractor
  * 
  * Kyle Dumo kyle.dumo.789@my.csun.edu
- * Joseph Pena joseph.pena.943@my.csun.edu
+ * Joseph Peña joseph.pena.943@my.csun.edu
  * 
  */
 
