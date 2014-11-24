@@ -13,52 +13,46 @@ namespace SierpinskiAttractor
     {
         private double sx;
         private double sy;//shape x and y
-        private Shape parent;
         private Shape shape;
-        private int parentIndex;
-        //private Shape[] parents;
-        //private int cpCounter = 0;
 
-
-        public SAShape(Shape point, int index)
+        public SAShape(Shape point)
         {
-            parent = point;
-            parentIndex = index;
-            shape = identifyShape();
+            shape = identifyShape(point);
+            shape.Fill = point.Fill;
+            shape.Height = 0.2 * point.Height;
+            shape.Width = 0.2 * point.Width;
         }
-        public SAShape(Shape point, double x, double y, int index)
+        public SAShape(Shape point, double x, double y)
         {
-            parent = point;
+            shape = identifyShape(point);
             sx = x;
             sy = y;
-            parentIndex = index;
-            shape = identifyShape();
-            //cpCounter = parents.Length; 
+            shape.Fill = point.Fill;
+            shape.Height = 0.2 * point.Height;
+            shape.Width = 0.2 * point.Width;
         }
         public void position(double x, double y)
         {
 
         }
 
-        public Shape getParent() { return parent; }
-
         public Shape getShape() { return shape; }
-
-        public int getIndex() { return parentIndex; }
 
         public double x() { return sx; }
 
         public double y() { return sy; }
 
-        public Shape identifyShape()
+        public Shape identifyShape(Shape s)
         {
-            Shape temp;
-            if (parent.Name == "Point" + parentIndex + "1")
+            Shape temp = s;
+            string output = temp.Name.Substring(temp.Name.Length - 1, 1);
+            if (output == "1")
             {
                 //shape is ellipse
-                temp = new Ellipse(){
-                    Height = 0.5*parent.Height,
-                    Width = 0.5*parent.Width,
+                temp = new Ellipse()
+                {
+                    Height = 0.2* temp.Height,
+                    Width = 0.2 * temp.Width,
                     Fill = Brushes.Blue  //parents color
                 };
             }
@@ -67,8 +61,8 @@ namespace SierpinskiAttractor
                 //shape is rectangle
                 temp = new Rectangle()
                 {
-                    Height = 0.5 * parent.Height,
-                    Width = 0.5 * parent.Width,
+                    Height = 0.2 * temp.Height,
+                    Width = 0.2 * temp.Width,
                     Fill = Brushes.Pink  //parents color
                 };
             }
