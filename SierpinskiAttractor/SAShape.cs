@@ -51,8 +51,8 @@ namespace SierpinskiAttractor
                 //shape is ellipse
                 temp = new Ellipse()
                 {
-                    Height = 0.2* temp.Height,
-                    Width = 0.2 * temp.Width,
+                    Height = 0.3* temp.Height,
+                    Width = 0.3 * temp.Width,
                     Fill = temp.Fill  //parents color
                 };
             }
@@ -61,8 +61,8 @@ namespace SierpinskiAttractor
                 //shape is rectangle
                 temp = new Rectangle()
                 {
-                    Height = 0.2 * temp.Height,
-                    Width = 0.2 * temp.Width,
+                    Height = 0.3 * temp.Height,
+                    Width = 0.3 * temp.Width,
                     Fill = temp.Fill   //parents color
                 };
             }
