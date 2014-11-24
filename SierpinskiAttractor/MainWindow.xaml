@@ -1,4 +1,11 @@
-﻿<Window x:Class="SierpinskiAttractor.MainWindow"
+﻿<!--
+  Comp 585
+  Sierpinski Attractor
+  
+  Kyle Dumo kyle.dumo.789@my.csun.edu
+  Joseph Pena joseph.pena.943@my.csun.edu-->
+    
+    <Window x:Class="SierpinskiAttractor.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Sierpinski Attractor" Height="500" Width="800" ResizeMode="NoResize">
