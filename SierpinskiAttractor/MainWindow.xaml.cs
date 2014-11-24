@@ -117,7 +117,7 @@ namespace SierpinskiAttractor
         {
             Shape newShape;
             //forr size debug
-            if (cpCounter < 6 /*&& !run*/)
+            if (cpCounter < 6 && !run)
             {
                 String index = "Shape" + cpCounter;
                 newShape = new Ellipse()
