@@ -1,4 +1,13 @@
-﻿using System;
+﻿/**
+ * Comp 585
+ * Sierpinski Attractor
+ * 
+ * Kyle Dumo kyle.dumo.789@my.csun.edu
+ * Joseph Pena joseph.pena.943@my.csun.edu
+ * 
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,7 +50,9 @@ namespace SierpinskiAttractor
 
         private void Usage_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult usage = MessageBox.Show("Usage\n" + "Add points\tBLAH\n" + "Edit Points\tBLAH\n" + "Move Points\tBLAH\n" + "Run\tBLAH\n" + "Clear\tBLAH\n");
+            MessageBoxResult usage = MessageBox.Show("Usage\n" + "Add points\tSpecify color and size\n\t\tRight Click on Canvas\n\n" 
+                + "Edit Points\tLeft Click on Point\n\t\tChange Color and Size\n\n" + "Move Points\tLeft Click on Point, Hold, Drag and Release\n\n" 
+                + "Run\t\tAdd atleast 3 points on Canvas\n\t\tClick Run\n\n" + "Clear\t\tClick Clear to remove all points\n");
         }
 
         private void About_Click(object sender, RoutedEventArgs e)
@@ -219,34 +230,6 @@ namespace SierpinskiAttractor
             //clear canvas, redraw control points and rerun
         }
 
-      /*  public void sierpinskinate()    //old one to look at for comparison
-        {
-            SAShape[] pattern = new SAShape[2000];
-            int lastSeed = seed.Next(0,cpCounter);
-            //Shape currentPoint = controlPoints[initial];
-            SAShape currentPoint = new SAShape(controlPoints[lastSeed], sx[lastSeed], sy[lastSeed], lastSeed);
-            SAShape lastPoint;
-            SAShape nextPoint;
-            for(int i = 0;i < 2000;i++)
-            {
-                int random = seed.Next(0, cpCounter);
-                while(random==lastSeed)
-                    random = seed.Next(0, cpCounter);
-                nextPoint = new SAShape(controlPoints[random], sx[random], sy[random], random);
-                if (i == 0)
-                    lastPoint = new SAShape(currentPoint.getParent(), (currentPoint.x() + nextPoint.x())/2, 
-                        (currentPoint.y() + nextPoint.y())/2, random);
-                else
-                    lastPoint = new SAShape(currentPoint.getParent(), (currentPoint.x() + nextPoint.x()) / 2, 
-                        (currentPoint.y() + nextPoint.y()) / 2, random);
-                pattern[i] = lastPoint;
-                Canvas.SetLeft(pattern[i].getShape(), pattern[i].x());
-                Canvas.SetTop(pattern[i].getShape(), pattern[i].y());
-                DaCanvas.Children.Add(pattern[i].getShape());
-                currentPoint = lastPoint;
-                lastSeed = random;
-            }
-        }*/
         public void sierpinskinate()
         {
             clearIt();

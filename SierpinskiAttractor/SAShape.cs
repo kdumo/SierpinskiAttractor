@@ -1,4 +1,13 @@
-﻿using System;
+﻿/**
+ * Comp 585
+ * Sierpinski Attractor
+ * 
+ * Kyle Dumo kyle.dumo.789@my.csun.edu
+ * Joseph Pena joseph.pena.943@my.csun.edu
+ * 
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
