@@ -21,11 +21,6 @@ namespace SierpinskiAttractor
     /// </summary>
     public partial class MainWindow : Window
     {
-        //private SOMETHING currColor;
-        //private String shapeType = "Circle"; 
-        //default to circle
-        private enum selectableShapes { Circle, Rectangle }
-        private selectableShapes shapeType = selectableShapes.Circle;//add more later maybe...or not
         private double mx, my;   //mouse x and y in canvas
 
         private double[] sx = new double[6]; 
@@ -35,7 +30,9 @@ namespace SierpinskiAttractor
         private int cpCounter = 0;
 
         private Shape selectedPoint = null;
-        private bool captured = false;
+        private bool captured = false, loadDone = false;
+        private SolidColorBrush color;
+        private int size = 10;
         Random seed = new Random();
         //SAShape[] pattern = new SAShape[2000];
 
@@ -57,9 +54,15 @@ namespace SierpinskiAttractor
         private void Run_Click(object sender, RoutedEventArgs e)
         {
             if (cpCounter < 3)
+            {
                 StatusLabel.Content = "Not Enough Control Points";
+                StatusLabel.Visibility = System.Windows.Visibility.Visible;
+            }
             else
+            {
+                StatusLabel.Visibility = System.Windows.Visibility.Visible;
                 sierpinskinate();
+            }
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e)
@@ -94,33 +97,17 @@ namespace SierpinskiAttractor
         private void setControlPoint(object sender, MouseButtonEventArgs e)
         {
             Shape newShape;
-            //forr size debug, can add method for size and color
-            int size = 10;
-            if(cpCounter < 6){  //out of bounds stuff
-                String index = "Point"+cpCounter;
-                switch (shapeType)  //1 ellipse 2 for rectangle
+            //forr size debug
+            if (cpCounter < 6)
+            {
+                String index = "Shape" + cpCounter;
+                newShape = new Ellipse()
                 {
-                    case selectableShapes.Circle:
-                        newShape = new Ellipse()
-                        {
-                            Name = index + "1",
-                            Height = size,
-                            Width = size,
-                            Fill = Brushes.Blue
-                            //we will get values from buttons/boxes
-                            //I fixed values for now
-                        };break;
-                    case selectableShapes.Rectangle:
-                        newShape = new Rectangle(){
-                            Name = index + "2",
-                            Height = size,
-                            Width = size,
-                            Fill = Brushes.Pink
-                        };
-                        break;
-                    default:
-                        return;
-                }
+                    Name = index,
+                    Height = size,
+                    Width = size,
+                    Fill = color
+                };
 
                 Canvas.SetLeft(newShape, e.GetPosition(DaCanvas).X);
                 Canvas.SetTop(newShape, e.GetPosition(DaCanvas).Y);
@@ -133,41 +120,56 @@ namespace SierpinskiAttractor
 
                 cpCounter++;
                 Indexshape.Content = "Control Points: " + cpCounter;
+
+                defaultValues();
+            }
+           
+            if (cpCounter >= 6)
+            {
+                Indexshape.Content = "Control Points: 6 (Max Reached)";
+                pointLabel.Content = "Select Point to Edit";
+                disableOptions();
             }
             else
-                StatusLabel.Content = "Only 6 points Allowed!";
-        }
-
-        private void circle_Checked(object sender, RoutedEventArgs e)
-        {   //how to keep people from choosing both more than one radio button at a time..??
-            /*var button = sender as RadioButton;
-            shapeType = button.Content.ToString();*/
-            shapeType = selectableShapes.Circle;
-        }
-
-        private void square_Checked(object sender, RoutedEventArgs e)
-        {
-            /*var button = sender as RadioButton;
-            shapeType = button.Content.ToString();*/
-            shapeType = selectableShapes.Rectangle;
+            {
+                enableOptions();
+            }
         }
 
         private void dragPoint(object sender, MouseButtonEventArgs e)
         {
             //drag point on click down
             try { selectedPoint = (Shape)e.Source; }
-            catch (System.InvalidCastException exc) //warningss
+            catch (System.InvalidCastException ice)
             {
-                StatusLabel.Content = "Not a Point";
+                selectedPoint = null;
+                defaultValues();
+                if (cpCounter >= 6)
+                {
+                    pointLabel.Content = "Select Point to Edit";
+                    disableOptions();
+                }
+                else
+                {
+                    pointLabel.Content = "Add New Point";
+                    enableOptions();
+                }
                 return;
             }
             if (selectedPoint != null)
             {
+                pointLabel.Content = "Edit Point";
+                enableOptions();
+
                 Mouse.Capture(selectedPoint);  //take it
                 captured = true;
                 mx = e.GetPosition(DaCanvas).X;
                 my = e.GetPosition(DaCanvas).Y;
-                for (shapeIndex = 0; shapeIndex < cpCounter && selectedPoint.Name != controlPoints[shapeIndex].Name; shapeIndex++) ;
+
+                for (shapeIndex = 0; shapeIndex < 6 && selectedPoint.Name != controlPoints[shapeIndex].Name; shapeIndex++) ;
+
+                loadDone = false;
+                selectedValues();
             }
         }
 
@@ -179,6 +181,7 @@ namespace SierpinskiAttractor
             {
                 Mouse.Capture(null); //take nothing (release)
                 captured = false;
+                enableOptions();
             }
             //clear canvas, redraw control points and rerun
             DaCanvas.Children.Clear();
@@ -223,5 +226,131 @@ namespace SierpinskiAttractor
        // {
 
        // }
+       
+        public void Color_Load(object sender, RoutedEventArgs e)
+        {
+            List<string> data = new List<string>();
+            data.Add("0");
+            data.Add("128");
+            data.Add("255");
+
+            var comboBox = sender as ComboBox;
+
+            comboBox.ItemsSource = data;
+        }
+
+        private void Color_Changed(object sender, SelectionChangedEventArgs e)
+        {
+            int r = Convert.ToInt32(rVal.SelectedValue);
+            int g = Convert.ToInt32(gVal.SelectedValue);
+            int b = Convert.ToInt32(bVal.SelectedValue);
+            color = new SolidColorBrush(Color.FromRgb((byte) r, (byte) g, (byte) b));
+            colorPreview.Fill = color;
+
+            if (selectedPoint != null && loadDone)
+            {
+                selectedPoint.Fill = color;
+            }
+            
+        }
+
+        private void Size_Checked(object sender, RoutedEventArgs e)
+        {
+            var radio = sender as RadioButton;
+            if ((string)radio.Content == "Small")
+            {
+                size = 10;
+            }
+            else if ((string)radio.Content == "Medium")
+            {
+                size = 15;
+            }
+            else
+            {
+                size = 20;
+            }
+
+            if (selectedPoint != null && loadDone)
+            {
+                selectedPoint.Width = size;
+                selectedPoint.Height = size;
+            }
+            
+        }
+
+        private void defaultValues(){
+            size = 10;
+            sizeS.IsChecked = true;
+
+            rVal.SelectedIndex = 0;
+            bVal.SelectedIndex = 0;
+            gVal.SelectedIndex = 0;
+            color = new SolidColorBrush(Colors.Black);
+            colorPreview.Fill = color;
+        }
+
+        public void selectedValues()
+        {
+            rVal.SelectedValue = Convert.ToString(Convert.ToInt32(((SolidColorBrush)selectedPoint.Fill).Color.R));
+            gVal.SelectedValue = Convert.ToString(Convert.ToInt32(((SolidColorBrush)selectedPoint.Fill).Color.G));
+            bVal.SelectedValue = Convert.ToString(Convert.ToInt32(((SolidColorBrush)selectedPoint.Fill).Color.B));
+            colorPreview.Fill = (SolidColorBrush) selectedPoint.Fill;
+            color = (SolidColorBrush)selectedPoint.Fill;
+
+            switch ((int)selectedPoint.Width)
+            {
+                case 10:
+                    sizeS.IsChecked = true;
+                    size = 10;
+                    break;
+                case 15:
+                    sizeM.IsChecked = true;
+                    size = 15;
+                    break;
+                case 20:
+                    sizeL.IsChecked = true;
+                    size = 20;
+                    break;
+            }
+
+            loadDone = true;
+        }
+
+        public void disableOptions()
+        {
+            rVal.IsEnabled = false;
+            bVal.IsEnabled = false;
+            gVal.IsEnabled = false;
+            sizeS.IsEnabled = false;
+            sizeM.IsEnabled = false;
+            sizeL.IsEnabled = false;
+            colorPreview.IsEnabled = false;
+        }
+
+        public void enableOptions()
+        {
+            rVal.IsEnabled = true;
+            bVal.IsEnabled = true;
+            gVal.IsEnabled = true;
+            sizeS.IsEnabled = true;
+            sizeM.IsEnabled = true;
+            sizeL.IsEnabled = true;
+            colorPreview.IsEnabled = true;
+
+        }
+
+        public void CursorOver(object sender, MouseEventArgs e)
+        {
+            var btn = sender as Label;
+
+            btn.Cursor = Cursors.Hand;
+        }
+
+        public void CursorOut(object sender, MouseEventArgs e)
+        {
+            var btn = sender as Label;
+
+            btn.Cursor = Cursors.Arrow;
+        }
     }
 }
