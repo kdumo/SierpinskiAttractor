@@ -40,12 +40,12 @@ namespace SierpinskiAttractor
 
         private void Usage_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult usage = MessageBox.Show("");
+            MessageBoxResult usage = MessageBox.Show("Usage\n" + "Add points\tBLAH\n" + "Edit Points\tBLAH\n" + "Move Points\tBLAH\n" + "Run\tBLAH\n" + "Clear\tBLAH\n");
         }
 
         private void About_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult about = MessageBox.Show("");
+            MessageBoxResult about = MessageBox.Show("Sierpinski Attractor\nKyle Dumo\tkyle.dumo.789@my.csun.edu\nJoseph Pena\tjoseph.pena.943@my.csun.edu");
         }
 
         private void Run_Click(object sender, RoutedEventArgs e)
@@ -58,7 +58,7 @@ namespace SierpinskiAttractor
             else
             {
                 run = true;
-                StatusLabel.Visibility = System.Windows.Visibility.Visible;
+                StatusLabel.Visibility = System.Windows.Visibility.Hidden;
                 sierpinskinate();
             }
         }
@@ -73,6 +73,7 @@ namespace SierpinskiAttractor
             DaCanvas.Children.Clear();
             run = false;
             StatusLabel.Content = "Add some Points";
+            pointLabel.Content = "Add New Point";
 
         }
 

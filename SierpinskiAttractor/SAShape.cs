@@ -53,7 +53,7 @@ namespace SierpinskiAttractor
                 {
                     Height = 0.2* temp.Height,
                     Width = 0.2 * temp.Width,
-                    Fill = Brushes.Blue  //parents color
+                    Fill = temp.Fill  //parents color
                 };
             }
             else
@@ -63,7 +63,7 @@ namespace SierpinskiAttractor
                 {
                     Height = 0.2 * temp.Height,
                     Width = 0.2 * temp.Width,
-                    Fill = Brushes.Pink  //parents color
+                    Fill = temp.Fill   //parents color
                 };
             }
             return temp;
