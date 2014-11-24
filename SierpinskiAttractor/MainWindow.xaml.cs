@@ -248,6 +248,7 @@ namespace SierpinskiAttractor
             }
         }
        
+        //initializes color values in combo box
         public void Color_Load(object sender, RoutedEventArgs e)
         {
             List<string> data = new List<string>();
@@ -260,6 +261,7 @@ namespace SierpinskiAttractor
             comboBox.ItemsSource = data;
         }
 
+        // sets color of point when combo box values are changed
         private void Color_Changed(object sender, SelectionChangedEventArgs e)
         {
             int r = Convert.ToInt32(rVal.SelectedValue);
@@ -277,20 +279,21 @@ namespace SierpinskiAttractor
             
         }
 
+        // sets size of point when radio button is clicked
         private void Size_Checked(object sender, RoutedEventArgs e)
         {
             var radio = sender as RadioButton;
-            if ((string)radio.Content == "Small")
-            {
-                size = 10;
-            }
-            else if ((string)radio.Content == "Medium")
-            {
-                size = 15;
-            }
-            else
-            {
-                size = 20;
+            switch((string)radio.Content){
+                case "Small":
+                    size = 10;
+                    break;
+            
+                case "Medium":
+                    size = 15;
+                    break;
+                case "Large":
+                    size = 20;
+                    break;
             }
 
             if (selectedPoint != null && loadDone && pointMatch)
@@ -300,9 +303,9 @@ namespace SierpinskiAttractor
                 if(run)
                     sierpinskinate();
             }
-            
         }
 
+        // sets color and size options to default values
         private void defaultValues(){
             size = 10;
             sizeS.IsChecked = true;
@@ -314,6 +317,7 @@ namespace SierpinskiAttractor
             colorPreview.Fill = color;
         }
 
+        // sets color and size options to the setting of the selected point
         public void selectedValues()
         {
             rVal.SelectedValue = Convert.ToString(Convert.ToInt32(((SolidColorBrush)selectedPoint.Fill).Color.R));
@@ -341,6 +345,7 @@ namespace SierpinskiAttractor
             loadDone = true;
         }
 
+        // Does not allow users to change color and size options
         public void disableOptions()
         {
             rVal.IsEnabled = false;
@@ -352,6 +357,7 @@ namespace SierpinskiAttractor
             colorPreview.IsEnabled = false;
         }
 
+        // Allows users to change color and size options
         public void enableOptions()
         {
             rVal.IsEnabled = true;
@@ -364,17 +370,17 @@ namespace SierpinskiAttractor
 
         }
 
+        // Change cursor to Hand over the about and usage labels
         public void CursorOver(object sender, MouseEventArgs e)
         {
             var btn = sender as Label;
-
             btn.Cursor = Cursors.Hand;
         }
 
+        // Change cursor to Arrow when leaving the about and usage labels
         public void CursorOut(object sender, MouseEventArgs e)
         {
             var btn = sender as Label;
-
             btn.Cursor = Cursors.Arrow;
         }
     }
