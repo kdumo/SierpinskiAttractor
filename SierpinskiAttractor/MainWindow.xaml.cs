@@ -96,7 +96,6 @@ namespace SierpinskiAttractor
             double y = e.GetPosition(DaCanvas).Y;
             if (captured && shapeIndex < cpCounter)
             {
-                pointMatch = true;
                 sx = cp[shapeIndex].x();
                 sx += x - mx;
                 Canvas.SetLeft(selectedPoint, sx);
@@ -118,7 +117,7 @@ namespace SierpinskiAttractor
         {
             Shape newShape;
             //forr size debug
-            if (cpCounter < 6 && !run)
+            if (cpCounter < 6 /*&& !run*/)
             {
                 String index = "Shape" + cpCounter;
                 newShape = new Ellipse()
@@ -176,12 +175,12 @@ namespace SierpinskiAttractor
             }
             if (selectedPoint != null)
             {
-                pointLabel.Content = "Edit Point";
-                enableOptions();
                 for (shapeIndex = 0; shapeIndex < cpCounter && 
                     selectedPoint.Name != cp[shapeIndex].getShape().Name; shapeIndex++) ;
                 if (shapeIndex != cpCounter)  //we got a match!!!
                 {
+                    pointLabel.Content = "Edit Point";
+                    enableOptions();
                     Mouse.Capture(selectedPoint);  //take it
                     captured = true;
                     mx = e.GetPosition(DaCanvas).X;
@@ -193,7 +192,16 @@ namespace SierpinskiAttractor
                 selectedValues();
             }
         }
-
+        public void clearIt()  //clears and redraws control points
+        {
+            DaCanvas.Children.Clear();
+            for (int i = 0; i < cpCounter; i++)
+            {
+                Canvas.SetLeft(cp[i].getShape(), cp[i].x());
+                Canvas.SetTop(cp[i].getShape(), cp[i].y());
+                DaCanvas.Children.Add(cp[i].getShape());
+            }
+        }
         private void releasePoint(object sender, MouseButtonEventArgs e)
         {
             //place point on click release
@@ -203,13 +211,8 @@ namespace SierpinskiAttractor
                 Mouse.Capture(null); //take nothing (release)
                 captured = false;
                 enableOptions();
-                DaCanvas.Children.Clear();
-                for (int i = 0; i < cpCounter; i++)
-                {
-                    Canvas.SetLeft(cp[i].getShape(), cp[i].x());
-                    Canvas.SetTop(cp[i].getShape(), cp[i].y());
-                    DaCanvas.Children.Add(cp[i].getShape());
-                }
+                clearIt();
+                pointMatch = true;
                 if (run)
                     sierpinskinate();
             }
@@ -246,9 +249,9 @@ namespace SierpinskiAttractor
         }*/
         public void sierpinskinate()
         {
-            int random = seed.Next(0, cpCounter);
+            clearIt();
             SAShape[] shape = new SAShape[2000];
-            ControlPoints last = cp[random];
+            ControlPoints last = cp[seed.Next(0, cpCounter)];
             ControlPoints next;
             for (int i = 0; i < 2000; i++)
             {
@@ -285,6 +288,8 @@ namespace SierpinskiAttractor
             if (selectedPoint != null && loadDone && pointMatch)
             {
                 selectedPoint.Fill = color;
+                if(run)
+                    sierpinskinate();
             }
             
         }
@@ -309,6 +314,8 @@ namespace SierpinskiAttractor
             {
                 selectedPoint.Width = size;
                 selectedPoint.Height = size;
+                if(run)
+                    sierpinskinate();
             }
             
         }
